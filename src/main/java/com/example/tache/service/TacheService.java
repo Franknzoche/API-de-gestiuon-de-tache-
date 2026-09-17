@@ -3,7 +3,7 @@ package com.example.tache.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import com.example.tache.Entity.*;;
+import com.example.tache.Entity.*;
 import com.example.tache.repository.TacheRepository;
 
 @Service 
@@ -29,7 +29,19 @@ public class TacheService {
  }
  /*recuper une tache par son id : ici , si le findbyid(id) ne renvoi pas la tache , cela veut dire que la tache 
  n'existe pas et donc on utlise le orElseThrow pour lever une execption et l'afficher */
- public Taches read(Long id){
+ public Taches readbyid(Long id){
     return repository.findById(id).orElseThrow(() -> new RuntimeException(" Tache introuvable : " + id));
+ }
+ /* modifier une tache (update) */
+ public Taches update(Taches donnees , Long id){
+   Taches tacheExistante = readbyid(id); /*on trouve la tache a modifie a partir de son id et on modifie chaque champs par les nouveuas donnees envoyer(donne.get....) */
+   tacheExistante.setTitre(donnees.getTitre());
+   tacheExistante.setDescription(donnees.getDescription());
+   tacheExistante.setStatut(donnees.getStatut());
+   return repository.save(tacheExistante);
+ }
+ /* supprimer une tache : delete*/
+ public void Delete(Long id){
+   repository.deleteById(id);
  }
 }

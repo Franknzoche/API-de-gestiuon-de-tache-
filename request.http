@@ -1,0 +1,67 @@
+### Créer une tâche 1
+POST http://localhost:8080/api/taches
+Content-Type: application/json
+
+{
+  "titre": "Rédiger le rapport mensuel",
+  "description": "Préparer le rapport financier du mois et l'envoyer au manager.",
+  "statut": "A_FAIRE"
+}
+
+### Créer une tâche 2
+POST http://localhost:8080/api/taches
+Content-Type: application/json
+
+{
+  "titre": "Réunion client",
+  "description": "Participer à la réunion avec le client pour valider les exigences.",
+  "statut": "EN_COURS"
+}
+
+### Créer une tâche 3
+POST http://localhost:8080/api/taches
+Content-Type: application/json
+
+{
+  "titre": "Mettre à jour le site vitrine",
+  "description": "Ajouter les nouvelles offres produits et corriger les images cassées.",
+  "statut": "TERMINEE"
+}
+
+### Créer une tâche 4
+POST http://localhost:8080/api/taches
+Content-Type: application/json
+
+{
+  "titre": "Vérifier les factures",
+  "description": "Contrôler les factures fournisseurs et valider les paiements.",
+  "statut": "A_FAIRE"
+}
+
+### Lister toutes les tâches
+GET http://localhost:8080/api/taches
+
+### Tâches à faire
+GET http://localhost:8080/api/taches?statut=A_FAIRE
+
+### Tâches en cours
+GET http://localhost:8080/api/taches?statut=EN_COURS
+
+### Tâches terminées
+GET http://localhost:8080/api/taches?statut=TERMINEE
+
+### Récupérer la tâche 1
+GET http://localhost:8080/api/taches/1
+
+### Modifier la tâche 1
+PUT http://localhost:8080/api/taches/1
+Content-Type: application/json
+
+{
+  "titre": "Rédiger le rapport mensuel final",
+  "description": "Préparer le rapport financier du mois, le valider puis l'envoyer au manager.",
+  "statut": "EN_COURS"
+}
+
+### Supprimer la tâche 4
+DELETE http://localhost:8080/api/taches/4
